@@ -9,7 +9,7 @@ class BankApp {
     login(name, password) {
         let user = this.bank.getUserByName(name)
         if(user === null) throw new LoginError()
-        if(user.password !== password) throw new LoginError()
+        if(!user.checkPassword(password)) throw new LoginError()
 
         this.userLoggedIn = user
     }

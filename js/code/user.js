@@ -7,6 +7,9 @@ class User {
         this.pictureUrl = null
         this.balance = 0
     }
+    checkPassword(password) {
+        return password === this.password
+    }
     setPicture(url) {
         this.pictureUrl = url
     }
