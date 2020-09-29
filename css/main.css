@@ -16,10 +16,11 @@
 header {
     background: rgb(56, 32, 68);
     color: white;
-    height: 130px;
+    height: 150px;
 }
 
 h1 {
+    font-size: 48px;
     margin-top: 30px;
 }
 
@@ -54,8 +55,13 @@ main .container {
 
 h2 {
     color: rgb(56, 32, 68);
+    font-size: 32px;
 }
 
+h3 {
+    margin: 16px 0;
+    font-size: 24px;
+}
 /* Form */
 
 form {
@@ -109,8 +115,45 @@ button {
     height: 35px;
 }
 
+.profile-card p {
+    font-size: 16px;
+}
+
 /* send */
 
 #sendForm .profile-card {
     margin-bottom: 20px;
+}
+
+/* profile */
+
+.profile-container a {
+    text-decoration: none;
+    color: black;
+    font-size: 12px;
+    display: block;
+}
+
+.profile-container a:hover {
+    color: rgba(56, 32, 68, 0.322);
+}
+
+.profile-container p {
+    font-size: 18px
+}
+
+.profile-container ul {
+    width: 50%;
+    border-top: 1px solid black;
+}
+
+.profile-container li {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+    font-size: 18px;
+    border-bottom: 1px solid black;
+    padding: 0px 8px;
 }

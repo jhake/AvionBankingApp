@@ -8,7 +8,7 @@ const generateHomeHtml = function() {
 
     if(bankApp.userLoggedIn !== null) {
         mainElement.querySelector("h2").innerHTML = `Welcome to our Banking App, ${bankApp.userLoggedIn.name}`
-        mainElement.querySelector("p").innerHTML = `Your current balance is: ${bankApp.userLoggedIn.balance}`
+        mainElement.querySelector("p").innerHTML = ""
     }
 
     bankApp.activeTab = activeTabs.HOME

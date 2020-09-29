@@ -31,4 +31,10 @@ class BankApp {
     register(name, password) {
         this.userLoggedIn = this.bank.createUser(name, password)
     }
+    changeName(name) {
+        this.userLoggedIn.name = name
+    }
+    changePictureUrl(url) {
+        this.userLoggedIn.pictureUrl = url
+    }
 }

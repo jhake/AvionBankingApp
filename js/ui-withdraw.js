@@ -16,7 +16,7 @@ const generateWithdrawHtml = function() {
 }
 
 const attachWithdrawListeners = function() {
-    document.getElementById("withdrawSubmit").onclick = withdraw
+    document.getElementById("withdrawForm").onsubmit = withdraw
 }
 
 const withdraw = function() {

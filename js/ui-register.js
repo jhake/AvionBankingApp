@@ -20,7 +20,7 @@ const generateRegisterHtml = function() {
 }
 
 const attachRegisterListeners = function() {
-    document.getElementById("registerSubmit").onclick = register
+    document.getElementById("registerForm").onsubmit = register
 }
 
 const register = function() {

@@ -30,9 +30,16 @@ class UserDoesNotExistError extends BankError {
     }
 }
 
+class SendToSelfError extends BankError {
+    constructor() {
+        super("Cannot send money to yourself")
+        this.name = "SendToSelfError"
+    }
+}
+
 class SenderDoesNotExistError extends UserDoesNotExistError {
     constructor(username) {
-        super(`User "${username}" doesn't exist`)
+        super(username)
         this.name = "SenderDoesNotExistError"
         this.username = username
     }
@@ -40,7 +47,7 @@ class SenderDoesNotExistError extends UserDoesNotExistError {
 
 class ReceiverDoesNotExistError extends UserDoesNotExistError {
     constructor(username) {
-        super(`User "${username}" doesn't exist`)
+        super(username)
         this.name = "ReceiverDoesNotExistError"
         this.username = username
     }

@@ -22,3 +22,16 @@ const alertErrorCatcher = function(fn) {
         throw error
     }
 }
+
+var moneyFormatter = function(num) {
+    let formattedString = new Intl.NumberFormat('en-US', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+    }).format(num)
+
+    if(num >= 0) {
+        formattedString = "+" + formattedString
+    }
+
+    return formattedString
+}

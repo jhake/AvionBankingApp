@@ -4,8 +4,8 @@ const generateSendHtml = function() {
     mainElement.innerHTML = '<div class="container send-container">'+
     '            <h2>Send</h2>'+
     '            <form id="sendForm" action="javascript:void(0);">'+
-    '                <label for="sendRecepient">Recipient</label>'+
-    '                <input type="text" id="sendRecepient" placeholder="Recipient">'+
+    '                <label for="sendReceiver">Recipient</label>'+
+    '                <input type="text" id="sendReceiver" placeholder="Recipient">'+
     '                <label for="sendAmount">Amount</label>'+
     '                <input type="number" id="sendAmount" placeholder="Amount">'+
     '                <button id="sendSubmit">Send</button>'+
@@ -18,31 +18,31 @@ const generateSendHtml = function() {
 }
 
 const attachSendListeners = function() {
-    document.getElementById("sendSubmit").onclick = send
-    document.getElementById("sendRecepient").onchange = showRecepient
+    document.getElementById("sendForm").onsubmit = send
+    document.getElementById("sendReceiver").onchange = showReceiver
 }
 
 const send = function() {
-    let sendRecepient = document.getElementById("sendRecepient")
+    let sendReceiver = document.getElementById("sendReceiver")
     let sendAmount = document.getElementById("sendAmount")
 
-    alertErrorCatcher(() => bankApp.send(sendRecepient.value, sendAmount.value))
+    alertErrorCatcher(() => bankApp.send(sendReceiver.value, sendAmount.value))
     updateHeader()
     generateHomeHtml()
 }
 
-const showRecepient = function() {
-    let sendRecepient = document.getElementById("sendRecepient")
+const showReceiver = function() {
+    let sendReceiver = document.getElementById("sendReceiver")
     let profileCard = document.querySelector(".profile-card")
     let sendForm = document.getElementById("sendForm")
 
-    let user = bankApp.bank.getUserByName(sendRecepient.value)
+    let user = bankApp.bank.getUserByName(sendReceiver.value)
 
     let newProfileCard = generateProfileCard(user)
 
     if(profileCard != undefined){
         sendForm.replaceChild(newProfileCard, profileCard)
     } else {
-        sendRecepient.after(newProfileCard)
+        sendReceiver.after(newProfileCard)
     }
 }

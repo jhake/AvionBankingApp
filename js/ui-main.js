@@ -19,6 +19,7 @@ headerDepositBtn.onclick = () => {generateDepositHtml()}
 headerWithdrawBtn.onclick = () => {generateWithdrawHtml()}
 headerSendBtn.onclick = () => {generateSendHtml()}
 headerRegisterBtn.onclick = () => {generateRegisterHtml()}
+headerProfileBtn.onclick = () => {generateProfileHtml()}
 
 const updateHeader = function() {
     if(bankApp.userLoggedIn === null) {
@@ -75,6 +76,11 @@ const updateHeader = function() {
 
 window.onload = () => {
     generateHomeHtml()
+
+    // bankApp.login("Jhake", "password1")
+    // bankApp.deposit(1000)
+    // bankApp.withdraw(200)
+    // generateProfileHtml()
 }
 
 const generateProfileCard = (user) => {
@@ -83,7 +89,7 @@ const generateProfileCard = (user) => {
 
     if(user === null) {
         profileCard.classList.add("profile-card-unknown")
-        let nameElement = document.createElement("h3")
+        let nameElement = document.createElement("p")
         nameElement.innerHTML = "User doesn't exist"
         profileCard.appendChild(nameElement)
         return profileCard
@@ -96,7 +102,7 @@ const generateProfileCard = (user) => {
         pictureElement.src = user.pictureUrl
     }
 
-    let nameElement = document.createElement("h3")
+    let nameElement = document.createElement("p")
     nameElement.innerHTML = user.name
 
     profileCard.appendChild(pictureElement)

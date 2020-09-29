@@ -10,3 +10,9 @@ const activeTabs = {
     PROFILE: 7,
     LOGOUT: 8
 }
+
+const transactionType = {
+    DEPOSIT: 0,
+    WITHDRAW: 1,
+    SEND: 2
+}

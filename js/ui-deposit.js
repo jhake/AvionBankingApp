@@ -16,7 +16,7 @@ const generateDepositHtml = function() {
 }
 
 const attachDepositListeners = function() {
-    document.getElementById("depositSubmit").onclick = deposit
+    document.getElementById("depositForm").onsubmit = deposit
 }
 
 const deposit = function() {

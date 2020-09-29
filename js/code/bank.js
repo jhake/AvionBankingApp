@@ -23,7 +23,9 @@ class Bank {
 
         let user = this.getUserByName(name)
         if(user === null) throw new UserDoesNotExistError(name)
-        return user.deposit(amount)
+
+        user.deposit(amount)
+        this.transactionHistory.push(new Transaction(user, transactionType.DEPOSIT, null, amount))
     }
     withdraw(name, amount) {
         if(!isString(name)) throw new WrongArgumentsError("name")
@@ -33,7 +35,8 @@ class Bank {
         let user = this.getUserByName(name)
         if(user === null) throw new UserDoesNotExistError(name)
         
-        return user.withdraw(amount)
+        user.withdraw(amount)
+        this.transactionHistory.push(new Transaction(user, transactionType.WITHDRAW, null, amount))
     }
     getBalance(name) {
         if(!isString(name)) throw new WrongArgumentsError("name")
@@ -44,7 +47,7 @@ class Bank {
     }
     send(senderName, receiverName, amount) {
         if(!isString(senderName)) throw new WrongArgumentsError("senderName")
-        if(!isString(receiverName)) throw new WrongArgumentsError("nareceiverNameme")
+        if(!isString(receiverName)) throw new WrongArgumentsError("receiverName")
         if(!isPositiveReal(amount)) throw new WrongArgumentsError("amount")
         amount = Number(amount)
 
@@ -54,8 +57,12 @@ class Bank {
         let receiver = this.getUserByName(receiverName)
         if(receiver === null) throw new ReceiverDoesNotExistError(receiverName)
 
+        if(sender === receiver) throw new SendToSelfError()
+
         sender.withdraw(amount)
         receiver.deposit(amount)
+        
+        this.transactionHistory.push(new Transaction(sender, transactionType.SEND, receiver, amount))
     }
     getUserByName(name) {
         for(let user of this.users) {

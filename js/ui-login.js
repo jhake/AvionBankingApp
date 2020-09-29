@@ -18,7 +18,7 @@ const generateLoginHtml = function() {
 }
 
 const attachLoginListeners = function() {
-    document.getElementById("loginSubmit").onclick = login
+    document.getElementById("loginForm").onsubmit = login
 }
 
 const login = function() {
