@@ -10,6 +10,8 @@ const generateWithdrawHtml = function() {
     '        </div>';
         
     attachWithdrawListeners()
+    bankApp.activeTab = "withdraw"
+    updateHeader()
 }
 
 const attachWithdrawListeners = function() {
@@ -20,6 +22,6 @@ const withdraw = function() {
     let withdrawAmount = document.getElementById("withdrawAmount")
 
     alertErrorCatcher(() => bankApp.withdraw(withdrawAmount.value))
-    modifyHeader()
+    updateHeader()
     generateHomeHtml()
 }

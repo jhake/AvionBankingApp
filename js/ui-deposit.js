@@ -10,6 +10,8 @@ const generateDepositHtml = function() {
     '        </div>';    
 
     attachDepositListeners()
+    bankApp.activeTab = "deposit"
+    updateHeader()
 }
 
 const attachDepositListeners = function() {
@@ -20,6 +22,6 @@ const deposit = function() {
     let depositAmount = document.getElementById("depositAmount")
 
     alertErrorCatcher(() => bankApp.deposit(depositAmount.value))
-    modifyHeader()
+    updateHeader()
     generateHomeHtml()
 }

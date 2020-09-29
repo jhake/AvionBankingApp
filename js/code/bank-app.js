@@ -4,6 +4,7 @@ class BankApp {
     constructor() {
         this.bank = new Bank()
         this.userLoggedIn = null
+        this.activeTab = "home"
     }
     login(name, password) {
         let user = this.bank.getUserByName(name)

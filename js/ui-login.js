@@ -11,6 +11,8 @@ const generateLoginHtml = function() {
     '        </div>'
 
     attachLoginListeners()
+    bankApp.activeTab = "login"
+    updateHeader()
 }
 
 const attachLoginListeners = function() {
@@ -22,12 +24,10 @@ const login = function() {
     let loginPassword = document.getElementById("loginPassword")
 
     alertErrorCatcher(() => bankApp.login(loginName.value, loginPassword.value))
-    modifyHeader()
     generateHomeHtml()
 }
 
 const logout = function() {
     bankApp.logout()
-    modifyHeader()
     generateHomeHtml()
 }

@@ -11,6 +11,8 @@ const generateRegisterHtml = function() {
     '        </div>'
 
     attachRegisterListeners()
+    bankApp.activeTab = "register"
+    updateHeader()
 }
 
 const attachRegisterListeners = function() {
@@ -22,6 +24,6 @@ const register = function() {
     let registerPassword = document.getElementById("registerPassword")
 
     alertErrorCatcher(() => bankApp.register(registerName.value, registerPassword.value))
-    modifyHeader()
+    updateHeader()
     generateHomeHtml()
 }

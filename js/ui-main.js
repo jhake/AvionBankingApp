@@ -9,6 +9,7 @@ const headerSendBtn = document.getElementById("headerSendBtn")
 const headerLogoutBtn = document.getElementById("headerLogoutBtn")
 const headerLoginBtn = document.getElementById("headerLoginBtn")
 const headerRegisterBtn = document.getElementById("headerRegisterBtn")
+const headerBtnList = document.querySelector(".header-btn-list")
 
 headerHomeBtn.onclick = () => {generateHomeHtml()}
 headerLoginBtn.onclick = () => {generateLoginHtml()}
@@ -18,9 +19,8 @@ headerWithdrawBtn.onclick = () => {generateWithdrawHtml()}
 headerSendBtn.onclick = () => {generateSendHtml()}
 headerRegisterBtn.onclick = () => {generateRegisterHtml()}
 
-const modifyHeader = function() {
+const updateHeader = function() {
     if(bankApp.userLoggedIn === null) {
-        headerHomeBtn.classList.remove("hidden")
         headerDepositBtn.classList.add("hidden")
         headerWithdrawBtn.classList.add("hidden")
         headerSendBtn.classList.add("hidden")
@@ -28,13 +28,42 @@ const modifyHeader = function() {
         headerLoginBtn.classList.remove("hidden")
         headerRegisterBtn.classList.remove("hidden")
     } else {
-        headerHomeBtn.classList.remove("hidden")
         headerDepositBtn.classList.remove("hidden")
         headerWithdrawBtn.classList.remove("hidden")
         headerSendBtn.classList.remove("hidden")
         headerLogoutBtn.classList.remove("hidden")
         headerLoginBtn.classList.add("hidden")
         headerRegisterBtn.classList.add("hidden")
+    }
+
+    for(let headerBtn of headerBtnList.children) {
+        headerBtn.classList.remove("active")
+    }
+
+    switch(bankApp.activeTab) {
+        case "home":
+            headerHomeBtn.classList.add("active")
+            break
+        case "deposit":
+            headerDepositBtn.classList.add("active")
+            break
+        case "withdraw":
+            headerWithdrawBtn.classList.add("active")
+            break
+        case "send":
+            headerSendBtn.classList.add("active")
+            break
+        case "login":
+            headerLoginBtn.classList.add("active")
+            break
+        case "register":
+            headerRegisterBtn.classList.add("active")
+            break
+        case "logout":
+            headerLogoutBtn.classList.add("active")
+            break
+        default:
+            break
     }
 }
 

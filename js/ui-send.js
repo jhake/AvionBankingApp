@@ -11,6 +11,8 @@ const generateSendHtml = function() {
     '        </div>'
         
     attachSendListeners()
+    bankApp.activeTab = "send"
+    updateHeader()
 }
 
 const attachSendListeners = function() {
@@ -22,6 +24,6 @@ const send = function() {
     let sendAmount = document.getElementById("sendAmount")
 
     alertErrorCatcher(() => bankApp.send(sendRecepient.value, sendAmount.value))
-    modifyHeader()
+    updateHeader()
     generateHomeHtml()
 }
