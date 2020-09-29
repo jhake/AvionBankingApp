@@ -11,7 +11,7 @@ const generateDepositHtml = function() {
     '        </div>';    
 
     attachDepositListeners()
-    bankApp.activeTab = "deposit"
+    bankApp.activeTab = activeTabs.DEPOSIT
     updateHeader()
 }
 

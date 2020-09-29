@@ -6,6 +6,7 @@ const headerHomeBtn = document.getElementById("headerHomeBtn")
 const headerDepositBtn = document.getElementById("headerDepositBtn")
 const headerWithdrawBtn = document.getElementById("headerWithdrawBtn")
 const headerSendBtn = document.getElementById("headerSendBtn")
+const headerProfileBtn = document.getElementById("headerProfileBtn")
 const headerLogoutBtn = document.getElementById("headerLogoutBtn")
 const headerLoginBtn = document.getElementById("headerLoginBtn")
 const headerRegisterBtn = document.getElementById("headerRegisterBtn")
@@ -24,6 +25,7 @@ const updateHeader = function() {
         headerDepositBtn.classList.add("hidden")
         headerWithdrawBtn.classList.add("hidden")
         headerSendBtn.classList.add("hidden")
+        headerProfileBtn.classList.add("hidden")
         headerLogoutBtn.classList.add("hidden")
         headerLoginBtn.classList.remove("hidden")
         headerRegisterBtn.classList.remove("hidden")
@@ -31,6 +33,7 @@ const updateHeader = function() {
         headerDepositBtn.classList.remove("hidden")
         headerWithdrawBtn.classList.remove("hidden")
         headerSendBtn.classList.remove("hidden")
+        headerProfileBtn.classList.remove("hidden")
         headerLogoutBtn.classList.remove("hidden")
         headerLoginBtn.classList.add("hidden")
         headerRegisterBtn.classList.add("hidden")
@@ -41,25 +44,28 @@ const updateHeader = function() {
     }
 
     switch(bankApp.activeTab) {
-        case "home":
+        case activeTabs.HOME:
             headerHomeBtn.classList.add("active")
             break
-        case "deposit":
+        case activeTabs.DEPOSIT:
             headerDepositBtn.classList.add("active")
             break
-        case "withdraw":
+        case activeTabs.WITHDRAW:
             headerWithdrawBtn.classList.add("active")
             break
-        case "send":
+        case activeTabs.SEND:
             headerSendBtn.classList.add("active")
             break
-        case "login":
+        case activeTabs.LOGIN:
             headerLoginBtn.classList.add("active")
             break
-        case "register":
+        case activeTabs.REGISTER:
             headerRegisterBtn.classList.add("active")
             break
-        case "logout":
+        case activeTabs.PROFILE:
+            headerProfileBtn.classList.add("active")
+            break
+        case activeTabs.LOGOUT:
             headerLogoutBtn.classList.add("active")
             break
         default:

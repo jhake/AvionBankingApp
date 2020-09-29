@@ -15,7 +15,7 @@ const generateRegisterHtml = function() {
     '        </div>'
 
     attachRegisterListeners()
-    bankApp.activeTab = "register"
+    bankApp.activeTab = activeTabs.REGISTER
     updateHeader()
 }
 

@@ -13,7 +13,7 @@ const generateSendHtml = function() {
     '        </div>'
         
     attachSendListeners()
-    bankApp.activeTab = "send"
+    bankApp.activeTab = activeTabs.SEND
     updateHeader()
 }
 

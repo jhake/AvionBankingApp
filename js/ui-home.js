@@ -11,6 +11,6 @@ const generateHomeHtml = function() {
         mainElement.querySelector("p").innerHTML = `Your current balance is: ${bankApp.userLoggedIn.balance}`
     }
 
-    bankApp.activeTab = "home"
+    bankApp.activeTab = activeTabs.HOME
     updateHeader()
 }

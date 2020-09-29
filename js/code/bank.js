@@ -3,6 +3,7 @@
 class Bank {
     constructor() {
         this.users = []
+        this.transactionHistory = []
     }
     createUser(name, password) {
         if(!isString(name)) throw new WrongArgumentsError("name")

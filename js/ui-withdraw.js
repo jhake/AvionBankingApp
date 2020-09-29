@@ -11,7 +11,7 @@ const generateWithdrawHtml = function() {
     '        </div>';
         
     attachWithdrawListeners()
-    bankApp.activeTab = "withdraw"
+    bankApp.activeTab = activeTabs.WITHDRAW
     updateHeader()
 }
 

@@ -13,7 +13,7 @@ const generateLoginHtml = function() {
     '        </div>'
 
     attachLoginListeners()
-    bankApp.activeTab = "login"
+    bankApp.activeTab = activeTabs.LOGIN
     updateHeader()
 }
 
