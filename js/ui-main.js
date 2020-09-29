@@ -68,5 +68,33 @@ const updateHeader = function() {
 }
 
 window.onload = () => {
-    generateLoginHtml()
+    generateHomeHtml()
+}
+
+const generateProfileCard = (user) => {
+    let profileCard = document.createElement("div")
+    profileCard.className = "profile-card"
+
+    if(user === null) {
+        profileCard.classList.add("profile-card-unknown")
+        let nameElement = document.createElement("h3")
+        nameElement.innerHTML = "User doesn't exist"
+        profileCard.appendChild(nameElement)
+        return profileCard
+    }
+
+    let pictureElement = document.createElement("img")
+    if(user.pictureUrl === null) {
+        pictureElement.src = "https://steamuserimages-a.akamaihd.net/ugc/885384897182110030/F095539864AC9E94AE5236E04C8CA7C2725BCEFF/"
+    } else {
+        pictureElement.src = user.pictureUrl
+    }
+
+    let nameElement = document.createElement("h3")
+    nameElement.innerHTML = user.name
+
+    profileCard.appendChild(pictureElement)
+    profileCard.appendChild(nameElement)
+
+    return profileCard
 }

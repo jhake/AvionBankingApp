@@ -19,6 +19,7 @@ const generateSendHtml = function() {
 
 const attachSendListeners = function() {
     document.getElementById("sendSubmit").onclick = send
+    document.getElementById("sendRecepient").onchange = showRecepient
 }
 
 const send = function() {
@@ -28,4 +29,20 @@ const send = function() {
     alertErrorCatcher(() => bankApp.send(sendRecepient.value, sendAmount.value))
     updateHeader()
     generateHomeHtml()
+}
+
+const showRecepient = function() {
+    let sendRecepient = document.getElementById("sendRecepient")
+    let profileCard = document.querySelector(".profile-card")
+    let sendForm = document.getElementById("sendForm")
+
+    let user = bankApp.bank.getUserByName(sendRecepient.value)
+
+    let newProfileCard = generateProfileCard(user)
+
+    if(profileCard != undefined){
+        sendForm.replaceChild(newProfileCard, profileCard)
+    } else {
+        sendRecepient.after(newProfileCard)
+    }
 }
