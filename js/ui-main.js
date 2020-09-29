@@ -68,5 +68,5 @@ const updateHeader = function() {
 }
 
 window.onload = () => {
-    generateHomeHtml()
+    generateLoginHtml()
 }

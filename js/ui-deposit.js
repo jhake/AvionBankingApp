@@ -4,7 +4,8 @@ const generateDepositHtml = function() {
     mainElement.innerHTML = '<div class="container deposit-container">'+
     '            <h2>Deposit</h2>'+
     '            <form id="depositForm" action="javascript:void(0);">'+
-    '                <input type="number" id="depositAmount">'+
+    '                <label for="depositAmount">Amount</label>'+
+    '                <input type="number" id="depositAmount" placeholder="Amount">'+
     '                <button id="depositSubmit">Deposit</button>'+
     '            </form>'+
     '        </div>';    

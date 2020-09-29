@@ -4,7 +4,8 @@ const generateWithdrawHtml = function() {
     mainElement.innerHTML = '<div class="container withdraw-container">'+
     '            <h2>Withdraw</h2>'+
     '            <form id="withdrawForm" action="javascript:void(0);">'+
-    '                <input type="number" id="withdrawAmount">'+
+    '                <label for="withdrawAmount">Amount</label>'+
+    '                <input type="number" id="withdrawAmount" placeholder="Amount">'+
     '                <button id="withdrawSubmit">Withdraw</button>'+
     '            </form>'+
     '        </div>';

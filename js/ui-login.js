@@ -2,10 +2,12 @@
 
 const generateLoginHtml = function() {
     mainElement.innerHTML = '<div class="container login-container">'+
-    '            <h2>Login</h2>'+
+    '            <h2>Login to your account</h2>'+
     '            <form id="loginForm" action="javascript:void(0);">'+
-    '                <input type="text" id="loginName">'+
-    '                <input type="password" id="loginPassword">'+
+    '                <label for="loginName">Name</label>'+
+    '                <input type="text" id="loginName" placeholder="Name">'+
+    '                <label for="loginPassword">Password</label>'+
+    '                <input type="password" id="loginPassword" placeholder="Password">'+
     '                <button id="loginSubmit">Login</button>'+
     '            </form>'+
     '        </div>'
