@@ -15,6 +15,8 @@ class User {
         return this.balance
     }
     withdraw(amount) {
+        if(amount > this.balance) throw new NotEnoughMoneyError(this.name, amount)
+        
         this.balance -= amount
         return this.balance
     }

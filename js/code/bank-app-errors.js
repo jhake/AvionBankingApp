@@ -9,7 +9,7 @@ class BankAppError extends Error {
 
 class LoginError extends BankAppError {
     constructor() {
-        super("Login error")
+        super("Username and/or password is wrong")
         this.name = "LoginError"
     }
 }

@@ -31,8 +31,6 @@ class Bank {
 
         let user = this.getUserByName(name)
         if(user === null) throw new UserDoesNotExistError(name)
-
-        if(amount > user.balance) throw new NotEnoughMoneyError(user, amount)
         
         return user.withdraw(amount)
     }
@@ -54,8 +52,6 @@ class Bank {
 
         let receiver = this.getUserByName(receiverName)
         if(receiver === null) throw new ReceiverDoesNotExistError(receiverName)
-
-        if(amount > sender.balance) throw new NotEnoughMoneyError(sender, amount)
 
         sender.withdraw(amount)
         receiver.deposit(amount)

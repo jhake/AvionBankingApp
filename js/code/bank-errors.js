@@ -45,11 +45,3 @@ class ReceiverDoesNotExistError extends UserDoesNotExistError {
         this.username = username
     }
 }
-
-class NotEnoughMoneyError extends BankError {
-    constructor(user, amount) {
-        super(`Not enough money: ${amount} can't be requested from user "${user.name}"`)
-        this.name = "NotEnoughMoneyError"
-        this.user = user
-    }
-}
