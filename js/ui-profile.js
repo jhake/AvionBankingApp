@@ -6,17 +6,19 @@ const generateProfileHtml = function() {
     '            <a href="#" id="profileChangeNameBtn">Change Name</a>'+
     '            <a href="#" id="profileChangePictureBtn">Change Picture</a>'+
     '            <h3>Balance</h3>'+
-    '            <p></p>'+
+    '            <span class="balance"></span>'+
     '            <h3>Transaction History</h3>'+
-    '            <ul></ul>'+
+    '            <ul>'+
+    '            <li class="heading"><span class="heading-description">DESCRIPTION</span><span>AMOUNT</span><span>RUNNING BALANCE</span></li>'+
+    '            </ul>'+
     '        </div>'
 
     const profileContainer = document.querySelector(".profile-container")
-    profileContainer.querySelector("p").innerHTML = moneyFormatter(bankApp.userLoggedIn.balance)
+    profileContainer.querySelector("span").innerHTML = moneyFormatter(bankApp.userLoggedIn.balance)
     
     profileContainer.querySelector("h2").after(generateProfileCard(bankApp.userLoggedIn))
 
-    generateBalanceLists().forEach( li => {
+    generateTransactionLists().forEach( li => {
         profileContainer.querySelector("ul").appendChild(li)
     })
     attachProfileListeners()
@@ -29,13 +31,19 @@ const attachProfileListeners = function() {
     document.getElementById("profileChangePictureBtn").onclick = changePictureUrl
 }
 
-const generateBalanceLists = function() {
+const generateTransactionLists = function() {
     let liArray = []
+    let currentBalance = 0
 
     for(let transaction of bankApp.getTransactions()) {
         let newLi = document.createElement("li")
-        let descriptionElement = document.createElement("p")
+        let descriptionElement = document.createElement("span")
         let amountElement = document.createElement("span")
+        let currentBalanceElement = document.createElement("span")
+
+        descriptionElement.className = "description"
+        amountElement.className = "amount"
+        currentBalanceElement.className = "current-balance"
 
         if(transaction.user === bankApp.userLoggedIn) {
             if(transaction.type === transactionType.SEND) {
@@ -53,13 +61,20 @@ const generateBalanceLists = function() {
 
         if(transaction.type === transactionType.SEND || transaction.type === transactionType.WITHDRAW) {
             realAmount = -transaction.amount
+            amountElement.classList.add("negative")
         } else {
             realAmount = transaction.amount
+            amountElement.classList.add("positive")
         }
+
+        currentBalance += realAmount
+
         amountElement.innerHTML = moneyFormatter(realAmount)
+        currentBalanceElement.innerHTML = moneyFormatter(currentBalance)
 
         newLi.appendChild(descriptionElement)
         newLi.appendChild(amountElement)
+        newLi.appendChild(currentBalanceElement)
         liArray.push(newLi)
     }
 
