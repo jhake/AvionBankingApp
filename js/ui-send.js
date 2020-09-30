@@ -28,7 +28,7 @@ const send = function() {
 
     alertErrorCatcher(() => bankApp.send(sendReceiver.value, sendAmount.value))
     
-    customAlert(`Successfully sent ${sendAmount.value} to ${moneyFormatter(sendReceiver.value)}`, "#070")
+    customAlert(`Successfully sent ${moneyFormatter(sendAmount.value)} to ${sendReceiver.value}`, "#070")
     updateHeader()
     generateHomeHtml()
 }
