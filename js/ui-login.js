@@ -5,9 +5,9 @@ const generateLoginHtml = function() {
     '            <h2>Login to your account</h2>'+
     '            <form id="loginForm" action="javascript:void(0);">'+
     '                <label for="loginName">Name</label>'+
-    '                <input type="text" id="loginName" placeholder="Name">'+
+    '                <input type="text" id="loginName" placeholder="Name" required>'+
     '                <label for="loginPassword">Password</label>'+
-    '                <input type="password" id="loginPassword" placeholder="Password">'+
+    '                <input type="password" id="loginPassword" placeholder="Password" required>'+
     '                <button id="loginSubmit">Login</button>'+
     '            </form>'+
     '        </div>'
@@ -26,10 +26,14 @@ const login = function() {
     let loginPassword = document.getElementById("loginPassword")
 
     alertErrorCatcher(() => bankApp.login(loginName.value, loginPassword.value))
+
+    customAlert("Successfully logged in.", "#070")
     generateHomeHtml()
 }
 
 const logout = function() {
     bankApp.logout()
+
+    customAlert("Successfully logged out.", "#070")
     generateHomeHtml()
 }

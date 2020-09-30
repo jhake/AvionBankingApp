@@ -5,9 +5,9 @@ const generateSendHtml = function() {
     '            <h2>Send</h2>'+
     '            <form id="sendForm" action="javascript:void(0);">'+
     '                <label for="sendReceiver">Recipient</label>'+
-    '                <input type="text" id="sendReceiver" placeholder="Recipient">'+
+    '                <input type="text" id="sendReceiver" placeholder="Recipient" required>'+
     '                <label for="sendAmount">Amount</label>'+
-    '                <input type="number" id="sendAmount" placeholder="Amount">'+
+    '                <input type="number" id="sendAmount" placeholder="Amount" required>'+
     '                <button id="sendSubmit">Send</button>'+
     '            </form>'+
     '        </div>'
@@ -27,6 +27,8 @@ const send = function() {
     let sendAmount = document.getElementById("sendAmount")
 
     alertErrorCatcher(() => bankApp.send(sendReceiver.value, sendAmount.value))
+    
+    customAlert(`Successfully sent ${sendAmount.value} to ${moneyFormatter(sendReceiver.value)}`, "#070")
     updateHeader()
     generateHomeHtml()
 }
@@ -36,7 +38,7 @@ const showReceiver = function() {
     let profileCard = document.querySelector(".profile-card")
     let sendForm = document.getElementById("sendForm")
 
-    let user = bankApp.bank.getUserByName(sendReceiver.value)
+    let user = bankApp.getUserByName(sendReceiver.value)
 
     let newProfileCard = generateProfileCard(user)
 

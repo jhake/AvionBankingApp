@@ -37,6 +37,13 @@ class SendToSelfError extends BankError {
     }
 }
 
+class InvalidImageUrl extends BankError {
+    constructor(url) {
+        super(`${url} is an invalid image URL`)
+        this.name = "InvalidImageUrl"
+    }
+}
+
 class SenderDoesNotExistError extends UserDoesNotExistError {
     constructor(username) {
         super(username)

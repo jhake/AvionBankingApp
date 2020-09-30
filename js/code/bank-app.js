@@ -32,9 +32,15 @@ class BankApp {
         this.userLoggedIn = this.bank.createUser(name, password)
     }
     changeName(name) {
-        this.userLoggedIn.name = name
+        this.bank.changeName(this.userLoggedIn.name, name)
     }
     changePictureUrl(url) {
-        this.userLoggedIn.pictureUrl = url
+        this.bank.changePictureUrl(this.userLoggedIn.name, url)
+    }
+    getUserByName(name) {
+        return this.bank.getUserByName(name)
+    }
+    getTransactions() {
+        return this.bank.transactions
     }
 }

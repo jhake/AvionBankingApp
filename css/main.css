@@ -157,3 +157,40 @@ button {
     border-bottom: 1px solid black;
     padding: 0px 8px;
 }
+
+/* overlays */
+#overlayContainer {
+    margin-bottom: 15px;
+    z-index: 1;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* alert */
+.alert {
+    padding: 20px;
+    color: white;
+    margin-top: 10px;
+    width: 50%;
+}
+
+/* The close button */
+.closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* When moving the mouse over the close button */
+.closebtn:hover {
+    color: black;
+}

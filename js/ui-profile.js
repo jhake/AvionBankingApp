@@ -32,7 +32,7 @@ const attachProfileListeners = function() {
 const generateBalanceLists = function() {
     let liArray = []
 
-    for(let transaction of bankApp.bank.transactionHistory) {
+    for(let transaction of bankApp.getTransactions()) {
         let newLi = document.createElement("li")
         let descriptionElement = document.createElement("p")
         let amountElement = document.createElement("span")
@@ -70,7 +70,7 @@ const changePictureUrl = function() {
     let newUrl = prompt("Enter new picture URL")
     if(!newUrl) return
 
-    bankApp.changePictureUrl(newUrl)
+    alertErrorCatcher(() => bankApp.changePictureUrl(newUrl))
     generateProfileHtml()
 }
 
@@ -78,6 +78,34 @@ const changeName = function() {
     let newName = prompt("Enter new name")
     if(!newName) return
 
-    bankApp.changeName(newName)
+    alertErrorCatcher(() => bankApp.changeName(newName))
     generateProfileHtml()
+}
+
+const generateProfileCard = (user) => {
+    let profileCard = document.createElement("div")
+    profileCard.className = "profile-card"
+
+    if(user === null) {
+        profileCard.classList.add("profile-card-unknown")
+        let nameElement = document.createElement("p")
+        nameElement.innerHTML = "User doesn't exist"
+        profileCard.appendChild(nameElement)
+        return profileCard
+    }
+
+    let pictureElement = document.createElement("img")
+    if(user.pictureUrl === null) {
+        pictureElement.src = "https://steamuserimages-a.akamaihd.net/ugc/885384897182110030/F095539864AC9E94AE5236E04C8CA7C2725BCEFF/"
+    } else {
+        pictureElement.src = user.pictureUrl
+    }
+
+    let nameElement = document.createElement("p")
+    nameElement.innerHTML = user.name
+
+    profileCard.appendChild(pictureElement)
+    profileCard.appendChild(nameElement)
+
+    return profileCard
 }

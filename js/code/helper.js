@@ -18,20 +18,17 @@ const alertErrorCatcher = function(fn) {
     try {
         fn()
     } catch(error) {
-        alert(error)
+        customAlert(error, "#A00")
         throw error
     }
 }
 
-var moneyFormatter = function(num) {
-    let formattedString = new Intl.NumberFormat('en-US', {
+const moneyFormatter = new Intl.NumberFormat('en-US', {
         minimumFractionDigits: 2,
         maximumFractionDigits: 2,
-    }).format(num)
+}).format
 
-    if(num >= 0) {
-        formattedString = "+" + formattedString
-    }
-
-    return formattedString
+const checkImageUrl = function(url) {
+    if(url.match === undefined) return false
+    return(url.match(/\.(jpeg|jpg|gif|png)$/) != null)
 }

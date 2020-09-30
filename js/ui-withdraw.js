@@ -5,7 +5,7 @@ const generateWithdrawHtml = function() {
     '            <h2>Withdraw</h2>'+
     '            <form id="withdrawForm" action="javascript:void(0);">'+
     '                <label for="withdrawAmount">Amount</label>'+
-    '                <input type="number" id="withdrawAmount" placeholder="Amount">'+
+    '                <input type="number" id="withdrawAmount" placeholder="Amount" required>'+
     '                <button id="withdrawSubmit">Withdraw</button>'+
     '            </form>'+
     '        </div>';
@@ -23,6 +23,8 @@ const withdraw = function() {
     let withdrawAmount = document.getElementById("withdrawAmount")
 
     alertErrorCatcher(() => bankApp.withdraw(withdrawAmount.value))
+
+    customAlert(`Successfully withdrawn ${moneyFormatter(withdrawAmount.value)}`, "#070")
     updateHeader()
     generateHomeHtml()
 }

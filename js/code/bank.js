@@ -3,7 +3,7 @@
 class Bank {
     constructor() {
         this.users = []
-        this.transactionHistory = []
+        this.transactions = []
     }
     createUser(name, password) {
         if(!isString(name)) throw new WrongArgumentsError("name")
@@ -16,6 +16,29 @@ class Bank {
         this.users.push(newUser)
         return newUser
     }
+    changeName(name, newName) {
+        if(!isString(name)) throw new WrongArgumentsError("name")
+        if(!isString(newName)) throw new WrongArgumentsError("newName")
+
+        let user = this.getUserByName(name)
+        if(user === null) throw new UserDoesNotExistError(name)
+
+        let checkUser = this.getUserByName(newName)
+        if(checkUser !== null) throw new UserAlreadyExistsError(name)
+
+        user.name = name
+    }
+    changePictureUrl(name, url) {
+        if(!isString(name)) throw new WrongArgumentsError("name")
+        if(!isString(url)) throw new WrongArgumentsError("url")
+
+        let user = this.getUserByName(name)
+        if(user === null) throw new UserDoesNotExistError(name)
+
+        if(!checkImageUrl(url)) throw new InvalidImageUrl(url)
+
+        user.pictureUrl = url
+    }
     deposit(name, amount) {
         if(!isString(name)) throw new WrongArgumentsError("name")
         if(!isPositiveReal(amount)) throw new WrongArgumentsError("amount")
@@ -25,7 +48,7 @@ class Bank {
         if(user === null) throw new UserDoesNotExistError(name)
 
         user.deposit(amount)
-        this.transactionHistory.push(new Transaction(user, transactionType.DEPOSIT, null, amount))
+        this.transactions.push(new Transaction(user, transactionType.DEPOSIT, null, amount))
     }
     withdraw(name, amount) {
         if(!isString(name)) throw new WrongArgumentsError("name")
@@ -36,7 +59,7 @@ class Bank {
         if(user === null) throw new UserDoesNotExistError(name)
         
         user.withdraw(amount)
-        this.transactionHistory.push(new Transaction(user, transactionType.WITHDRAW, null, amount))
+        this.transactions.push(new Transaction(user, transactionType.WITHDRAW, null, amount))
     }
     getBalance(name) {
         if(!isString(name)) throw new WrongArgumentsError("name")
@@ -62,7 +85,7 @@ class Bank {
         sender.withdraw(amount)
         receiver.deposit(amount)
         
-        this.transactionHistory.push(new Transaction(sender, transactionType.SEND, receiver, amount))
+        this.transactions.push(new Transaction(sender, transactionType.SEND, receiver, amount))
     }
     getUserByName(name) {
         for(let user of this.users) {

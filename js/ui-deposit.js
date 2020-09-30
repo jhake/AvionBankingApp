@@ -5,7 +5,7 @@ const generateDepositHtml = function() {
     '            <h2>Deposit</h2>'+
     '            <form id="depositForm" action="javascript:void(0);">'+
     '                <label for="depositAmount">Amount</label>'+
-    '                <input type="number" id="depositAmount" placeholder="Amount">'+
+    '                <input type="number" id="depositAmount" placeholder="Amount" required>'+
     '                <button id="depositSubmit">Deposit</button>'+
     '            </form>'+
     '        </div>';    
@@ -23,6 +23,8 @@ const deposit = function() {
     let depositAmount = document.getElementById("depositAmount")
 
     alertErrorCatcher(() => bankApp.deposit(depositAmount.value))
+
+    customAlert(`Successfully deposited ${moneyFormatter(depositAmount.value)}`, "#070")
     updateHeader()
     generateHomeHtml()
 }

@@ -12,6 +12,8 @@ const headerLoginBtn = document.getElementById("headerLoginBtn")
 const headerRegisterBtn = document.getElementById("headerRegisterBtn")
 const headerBtnList = document.querySelector(".header-btn-list")
 
+const overlayContainer = document.getElementById("overlayContainer")
+
 headerHomeBtn.onclick = () => {generateHomeHtml()}
 headerLoginBtn.onclick = () => {generateLoginHtml()}
 headerLogoutBtn.onclick = () => {logout()}
@@ -83,30 +85,15 @@ window.onload = () => {
     // generateProfileHtml()
 }
 
-const generateProfileCard = (user) => {
-    let profileCard = document.createElement("div")
-    profileCard.className = "profile-card"
+const customAlert = function(message, color) {
+    if(color === undefined) color = "#000"
 
-    if(user === null) {
-        profileCard.classList.add("profile-card-unknown")
-        let nameElement = document.createElement("p")
-        nameElement.innerHTML = "User doesn't exist"
-        profileCard.appendChild(nameElement)
-        return profileCard
-    }
+    let alertBox = document.createElement("div")
+    alertBox.className = "alert"
+    alertBox.innerHTML = '<span class="closebtn" onclick="this.parentElement.style.display=\'none\';">×</span>' + message
+    alertBox.setAttribute("style", `background: ${color}`)
 
-    let pictureElement = document.createElement("img")
-    if(user.pictureUrl === null) {
-        pictureElement.src = "https://steamuserimages-a.akamaihd.net/ugc/885384897182110030/F095539864AC9E94AE5236E04C8CA7C2725BCEFF/"
-    } else {
-        pictureElement.src = user.pictureUrl
-    }
+    setTimeout(() => alertBox.remove(), 2000)
 
-    let nameElement = document.createElement("p")
-    nameElement.innerHTML = user.name
-
-    profileCard.appendChild(pictureElement)
-    profileCard.appendChild(nameElement)
-
-    return profileCard
+    overlayContainer.appendChild(alertBox)
 }
