@@ -3,7 +3,7 @@
 const generateHomeHtml = function() {
     mainElement.innerHTML ='<div class="container home-container">'+
     '            <h2>Welcome to our Banking App</h2>'+
-    '            <p>Please login or register to start using the app</p>'+
+    '            <p>Please <a onclick=generateLoginHtml()>login</a> or <a onclick=generateRegisterHtml()>register</a> to start using the app</p>'+
     '        </div>'    
 
     if(bankApp.userLoggedIn !== null) {
