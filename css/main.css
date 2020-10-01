@@ -90,6 +90,15 @@ button {
     justify-content: center;
 }
 
+a {
+    cursor: pointer;
+    color: rgb(56, 32, 68);
+    font-weight: 700;
+}
+
+a:hover {
+    color: rgba(56, 32, 68, 0.2);
+}
 
 /* Profile card */
 
@@ -167,11 +176,15 @@ button {
 .profile-container li .amount {
     font-size: 18px;
     font-weight: 800;
+    width: 25%;
+    text-align: right;
 }
 
 .profile-container li .current-balance {
     font-size: 18px;
     font-weight: 200;
+    width: 25%;
+    text-align: right;
 }
 
 .profile-container li.heading .heading-description {
