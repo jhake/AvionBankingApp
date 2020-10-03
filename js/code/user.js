@@ -3,12 +3,12 @@
 class User {
     constructor(name, password) {
         this.name = name
-        this.password = password
+        this.passwordHash = CryptoJS.MD5(password).toString()
         this.pictureUrl = null
         this.balance = 0
     }
     checkPassword(password) {
-        return password === this.password
+        return this.passwordHash === CryptoJS.MD5(password).toString()
     }
     setPicture(url) {
         this.pictureUrl = url
