@@ -59,9 +59,17 @@ const generateTransactionLists = function() {
 
         let realAmount
 
-        if(transaction.type === transactionType.SEND || transaction.type === transactionType.WITHDRAW) {
+        if(transaction.type === transactionType.WITHDRAW) {
             realAmount = -transaction.amount
             amountElement.classList.add("negative")
+        } else if(transaction.type === transactionType.SEND) {
+            if(transaction.receiver === bankApp.userLoggedIn) {
+                realAmount = transaction.amount
+                amountElement.classList.add("positive")
+            } else {
+                realAmount = -transaction.amount
+                amountElement.classList.add("negative")
+            }
         } else {
             realAmount = transaction.amount
             amountElement.classList.add("positive")
