@@ -7,7 +7,7 @@ const isString = function(s) {
 const isPositiveReal = function(num) {
     if(isNaN(num)) {
         return false
-    } else if(num < 0) {
+    } else if(num <= 0) {
         return false
     } else {
         return true
